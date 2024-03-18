@@ -29,13 +29,65 @@ import {
     TagIcon,
     UserGroupIcon,
 } from "@heroicons/react/24/solid";
+import HouseIcon from '@mui/icons-material/House';
 
 const navListMenuItems = [
     {
-        title: "Products",
-        description: "Find the perfect solution for your needs.",
-        icon: SquaresPlusIcon,
-        url: "/about",
+        title: "House at Delhi",
+        description: "Independent Houses for Sale in Delhi",
+        icon: HouseIcon,
+        url: "/search?searchTerm=Delhi",
+
+    },
+
+    {
+        title: "House at Bangalore",
+        description: "Independent Houses for Sale in Bangalore",
+        icon: HouseIcon,
+        url: "/search?searchTerm=Bangalore",
+    },
+
+    {
+        title: "House at Hyderabad",
+        description: "Independent Houses for Sale in Hyderabad",
+        icon: HouseIcon,
+        url: "/search?searchTerm=Hyderabad",
+
+    },
+    {
+        title: "House at Mumbai",
+        description: "Independent Houses for Sale in Mumbai",
+        icon: HouseIcon,
+        url: "/search?searchTerm=Mumbai",
+
+    },
+    {
+        title: "House at Pune",
+        description: "Independent Houses for Sale in Pune",
+        icon: HouseIcon,
+        url: "/search?searchTerm=Pune",
+
+    },
+    {
+        title: "House at Gurgaon",
+        description: "Independent Houses for Sale in Gurgaon",
+        icon: HouseIcon,
+        url: "/search?searchTerm=Gurgaon",
+
+    },
+    {
+        title: "House at Noida",
+        description: "Independent Houses for Sale in Noida",
+        icon: HouseIcon,
+        url: "/search?searchTerm=Noida",
+
+    },
+    {
+        title: "Special Offers",
+        description: "Explore limited-time deals and bundles",
+        icon: TagIcon,
+        url: "/search?searchTerm=&type=all&parking=false&furnished=false&offer=true&sort=regularPrice&order=asc",
+
     },
     {
         title: "About Us",
@@ -44,55 +96,8 @@ const navListMenuItems = [
         url: "/about",
 
     },
-    {
-        title: "Blog",
-        description: "Find the perfect solution for your needs.",
-        icon: Bars4Icon,
-        url: "/about",
 
-    },
-    {
-        title: "Services",
-        description: "Learn how we can help you achieve your goals.",
-        icon: SunIcon,
-        url: "/about",
 
-    },
-    {
-        title: "Support",
-        description: "Reach out to us for assistance or inquiries",
-        icon: GlobeAmericasIcon,
-        url: "/about",
-
-    },
-    {
-        title: "Contact",
-        description: "Find the perfect solution for your needs.",
-        icon: PhoneIcon,
-        url: "/about",
-
-    },
-    {
-        title: "News",
-        description: "Read insightful articles, tips, and expert opinions.",
-        icon: NewspaperIcon,
-        url: "/about",
-
-    },
-    {
-        title: "Products",
-        description: "Find the perfect solution for your needs.",
-        icon: RectangleGroupIcon,
-        url: "/about",
-
-    },
-    {
-        title: "Special Offers",
-        description: "Explore limited-time deals and bundles",
-        icon: TagIcon,
-        url: "/about",
-
-    },
 ];
 
 function NavListMenu() {
@@ -192,15 +197,6 @@ function NavList() {
     };
     return (
         <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
-            {/* <Typography
-                as="a"
-                href="/"
-                variant="small"
-                color="blue-gray"
-                className="font-medium"
-            >
-                <ListItem className="flex items-center gap-2 py-2 pr-4">Home</ListItem>
-            </Typography> */}
 
             <form
                 onSubmit={handleSubmit}
@@ -223,33 +219,28 @@ function NavList() {
             </form>
 
             <NavListMenu />
-            <Typography
-                as="a"
-                href="#"
-                variant="small"
-                color="blue-gray"
-                className="font-medium"
-            >
-                <ListItem className="flex items-center gap-2 py-2 pr-4">
-                    Contact Us
-                </ListItem>
-            </Typography>
+            <Link to="search">
+                <Typography
+                    as="a"
+                    variant="small"
+                    color="blue-gray"
+                    className="font-medium"
+                >
+                    <ListItem className="flex items-center gap-2 py-2 pr-4">
+                        Browse Our Listings Now!
+                    </ListItem>
+                </Typography>
+            </Link>
         </List>
     );
 }
 
 
 import {
-    CubeTransparentIcon,
     UserCircleIcon,
-    CodeBracketSquareIcon,
-    Square3Stack3DIcon,
     Cog6ToothIcon,
     InboxArrowDownIcon,
     LifebuoyIcon,
-    PowerIcon,
-    RocketLaunchIcon,
-    Bars2Icon,
 } from "@heroicons/react/24/solid";
 // profile menu component
 const profileMenuItems = [
@@ -293,7 +284,7 @@ function ProfileMenu() {
     const handleSignOut = async () => {
         try {
             dispatch(signOutUserStart());
-            const res = await fetch(`https://sk-home-backend.onrender.com/api/auth/signout`);
+            const res = await fetch(`/api/auth/signout`);
             const data = await res.json();
             if (data.success === false) {
                 dispatch(deleteUserFailure(data.message));
@@ -359,7 +350,7 @@ function ProfileMenu() {
                     );
                 })}
                 <button className="w-full text-start pl-4 p-2 hover:bg-red-100 hover:border-dashed">
-                    
+
                     <Typography
                         as="span"
                         variant="small"
@@ -394,7 +385,7 @@ export function NavbarWithMegaMenu() {
     }, []);
 
     return (
-        <Navbar className=" mx-auto max-w-screen-xl px-4 py-2">
+        <Navbar className="fixed top-0 z-10 mx-auto max-w-full px-5 py-2 ">
             <div className="flex items-center justify-between text-blue-gray-900">
                 <Link to="/">
                     <Typography
@@ -402,7 +393,7 @@ export function NavbarWithMegaMenu() {
                         variant="h6"
                         className="mr-4 cursor-pointer py-1.5 lg:ml-2"
                     >
-                        Satyam Kumar
+                        Sk Homes
                     </Typography>
                 </Link>
 

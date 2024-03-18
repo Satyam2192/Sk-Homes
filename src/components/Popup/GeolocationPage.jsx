@@ -85,8 +85,8 @@ const GeolocationPage = () => {
         />
       </div>
 
-      <div className="mt-5">
-        <MapContainer key={mapKey} center={coordinates} zoom={zoomLevel} style={{ height: '340px', width: '100%' }}>
+      <div className="mt-5 z-0">
+        <MapContainer key={mapKey} center={coordinates} zoom={zoomLevel} style={{ height: '340px', width: '100%', zIndex:1, position:'relative' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

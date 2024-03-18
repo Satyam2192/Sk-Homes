@@ -194,7 +194,7 @@ export function Steps() {
         return setError('Discount price must be lower than regular price');
       setLoading(true);
       setError(false);
-      const res = await fetch(`https://sk-home-backend.onrender.com/api/listing/create`, {
+      const res = await fetch(`/api/listing/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -518,51 +518,60 @@ export function Steps() {
                   onClick={handleImageSubmit}
                   className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
                 >
-                  {uploading ? 'Uploading...' : 'Upload'}
-                </button>
-              </div>
-              <p className='text-red-700 text-sm'>
-                {imageUploadError && imageUploadError}
-              </p>
-              {formData.imageUrls.length > 0 &&
-                formData.imageUrls.map((url, index) => (
-                  <div
-                    key={url}
-                    className='flex justify-between p-3 border items-center'
-                  >
-                    <img
-                      src={url}
-                      alt='listing image'
-                      className='w-20 h-20 object-contain rounded-lg'
-                    />
-                    <button
-                      type='button'
-                      onClick={() => handleRemoveImage(index)}
-                      className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
-                    >
-                      Delete
-                    </button>
-                  </div>
-                ))}
-              <button
-                disabled={loading || uploading}
-                className='p-3 bg-black text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
-              >
-                {loading ? 'Creating...' : 'Create listing'}
+                  {uploading ? <div className=' items-center flex justify-center'>< svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-live="polite" aria-busy="true" aria-labelledby="title-08a desc-08a" className="w-6 h-6">
+                  <path d="M7 8H3V16H7V8Z" className="fill-[#10b981] animate animate-bounce " />
+                  <path d="M14 8H10V16H14V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.2s]" />
+                  <path d="M21 8H17V16H21V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.4s]" />
+                </svg></div> : 'Upload'}
               </button>
-              {error && <p className='text-red-700 text-sm'>{error}</p>}
+
             </div>
-          </form>
+            <p className='text-red-700 text-sm'>
+              {imageUploadError && imageUploadError}
+            </p>
+            {formData.imageUrls.length > 0 &&
+              formData.imageUrls.map((url, index) => (
+                <div
+                  key={url}
+                  className='flex justify-between p-3 border items-center'
+                >
+                  <img
+                    src={url}
+                    alt='listing image'
+                    className='w-20 h-20 object-contain rounded-lg'
+                  />
+                  <button
+                    type='button'
+                    onClick={() => handleRemoveImage(index)}
+                    className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
+            <button
+              disabled={loading || uploading}
+              className='p-3 bg-black text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
+            >
+              {loading ? <div className=' items-center flex justify-center'>< svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-live="polite" aria-busy="true" aria-labelledby="title-08a desc-08a" className="w-6 h-6">
+                  <path d="M7 8H3V16H7V8Z" className="fill-[#10b981] animate animate-bounce " />
+                  <path d="M14 8H10V16H14V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.2s]" />
+                  <path d="M21 8H17V16H21V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.4s]" />
+                </svg></div> : 'Create listing'}
+            </button>
+            {error && <p className='text-red-700 text-sm'>{error}</p>}
+          </div>
+        </form>
         </main>
       }
-      <div className="mt-2 flex justify-between">
-        <Button onClick={handlePrev} disabled={isFirstStep}>
-          Prev
-        </Button>
-        <Button onClick={handleNext} disabled={isLastStep}>
-          Next
-        </Button>
-      </div>
-    </div>
+<div className="mt-2 flex justify-between">
+  <Button onClick={handlePrev} disabled={isFirstStep}>
+    Prev
+  </Button>
+  <Button onClick={handleNext} disabled={isLastStep}>
+    Next
+  </Button>
+</div>
+    </div >
   );
 }

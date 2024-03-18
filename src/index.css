@@ -4,4 +4,12 @@
 
 body{
     background-color: rgb(241, 245, 241);
+    margin-top: 57px;
+}
+*{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI','Open Sans', 'Helvetica Neue', 'sans-serif';
+    
+}
+h{
+    text-transform: uppercase;
 }

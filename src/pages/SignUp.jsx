@@ -20,7 +20,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch(`https://sk-home-backend.onrender.com/api/auth/signup`, {
+      const res = await fetch(`/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export default function SignUp() {
               <input
                 type='text'
                 placeholder='username'
-                className='w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none'
+                className='w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-[#059669] focus:bg-white focus:outline-none'
                 id='username'
                 onChange={handleChange}
               />
@@ -74,7 +74,7 @@ export default function SignUp() {
               <input
                 type='email'
                 placeholder='email'
-                className='w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none'
+                className='w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-[#059669] focus:bg-white focus:outline-none'
                 id='email'
                 onChange={handleChange}
               />
@@ -85,22 +85,26 @@ export default function SignUp() {
               <input
                 type='password'
                 placeholder='password'
-                className='w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none'
+                className='w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-[#059669] focus:bg-white focus:outline-none'
                 id='password'
                 onChange={handleChange}
               />
             </div>
 
             <div className="text-right mt-2">
-              <a href="#" className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
+              <a href="#" className="text-sm font-semibold text-gray-700 hover:text-[#059669] focus:text-[#059669]">Forgot Password?</a>
             </div>
 
             <button
               disabled={loading}
               onClick={handleSubmit}
-              className='w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6'
+              className='w-full block bg-[#10b981] hover:bg-[#059669] focus:bg-[#059669] text-white font-semibold rounded-lg px-4 py-3 mt-6'
             >
-              {loading ? 'Loading...' : 'Sign Up'}
+              {loading ? <div className=' items-center flex justify-center'>< svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-live="polite" aria-busy="true" aria-labelledby="title-08a desc-08a" className="w-6 h-6">
+                  <path d="M7 8H3V16H7V8Z" className="fill-[#10b981] animate animate-bounce " />
+                  <path d="M14 8H10V16H14V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.2s]" />
+                  <path d="M21 8H17V16H21V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.4s]" />
+                </svg></div> : 'Sign Up'}
             </button>
 
           </form>
@@ -110,7 +114,7 @@ export default function SignUp() {
 
           <OAuth />
 
-          <p className="mt-8">Have an account <Link to={'/sign-in'} className="text-blue-500 hover:text-blue-700 font-semibold">Log In</Link></p>
+          <p className="mt-8">Have an account <Link to={'/sign-in'} className="text-[#059669] hover:text-[#059669] font-semibold">Log In</Link></p>
           {error && <p className='text-red-500 mt-5'>{error}</p>}
         </div>
 

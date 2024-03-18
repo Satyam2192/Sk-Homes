@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
-import { MdLocationOn } from 'react-icons/md';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import BedIcon from '@mui/icons-material/Bed';
+import BathtubIcon from '@mui/icons-material/Bathtub';
 
 export default function ListingItem({ listing }) {
+  const handleClick = () => {
+    window.scroll(0,0)
+  }
   return (
     <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
-      <Link to={`/listing/${listing._id}`}>
+      <Link to={`/listing/${listing._id}`} onClick={handleClick}>
         <img
           src={
             listing.imageUrls[0] ||
@@ -18,7 +23,7 @@ export default function ListingItem({ listing }) {
             {listing.name}
           </p>
           <div className='flex items-center gap-1'>
-            <MdLocationOn className='h-4 w-4 text-green-700' />
+            <LocationOnIcon className='h-4 w-4 text-[#059669]' />
             <p className='text-sm text-gray-600 truncate w-full'>
               {listing.address}
             </p>
@@ -27,23 +32,36 @@ export default function ListingItem({ listing }) {
             {listing.description}
           </p>
           <p className='text-slate-500 mt-2 font-semibold '>
-            $
+            ₹ {" "}
             {listing.offer
               ? listing.discountPrice.toLocaleString('en-US')
               : listing.regularPrice.toLocaleString('en-US')}
             {listing.type === 'rent' && ' / month'}
           </p>
           <div className='text-slate-700 flex gap-4'>
-            <div className='font-bold text-xs'>
+
+            <div className='font-bold text-md  '>
+              <span className='mr-2 text-center items-center text-[#059669]'><BedIcon /></span>
+
               {listing.bedrooms > 1
                 ? `${listing.bedrooms} beds `
-                : `${listing.bedrooms} bed `}
+                : `${listing.bedrooms} bed`}
             </div>
-            <div className='font-bold text-xs'>
+            <div className='font-bold text-md '>
+              <span className='mr-2 text-center items-center text-[#059669]'><BathtubIcon /></span>
+
               {listing.bathrooms > 1
                 ? `${listing.bathrooms} baths `
                 : `${listing.bathrooms} bath `}
             </div>
+            {/* <div className='font-bold text-md '>
+              <span className='mr-2 text-center items-center text-[#059669]'><LocalParkingIcon /></span>
+              {listing.parking ? 'Parking spot' : 'No Parking'}
+            </div> */}
+            {/* <div className='font-bold text-md '>
+              <FaChair className='mr-2 text-center items-center text-[#059669]' />
+              {listing.furnished ? 'Furnished' : 'Unfurnished'}
+            </div> */}
           </div>
         </div>
       </Link>

@@ -70,7 +70,7 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`https://sk-home-backend.onrender.com/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ export default function Profile() {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`https://sk-home-backend.onrender.com/api/user/delete/${currentUser._id}`, {
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
         method: 'DELETE',
       });
       const data = await res.json();
@@ -110,7 +110,7 @@ export default function Profile() {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch(`https://sk-home-backend.onrender.com/api/auth/signout`);
+      const res = await fetch(`/api/auth/signout`);
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
@@ -125,7 +125,7 @@ export default function Profile() {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`https://sk-home-backend.onrender.com/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
       const data = await res.json();
       if (data.success === false) {
         setShowListingsError(true);
@@ -140,7 +140,7 @@ export default function Profile() {
 
   const handleListingDelete = async (listingId) => {
     try {
-      const res = await fetch(`https://sk-home-backend.onrender.com/api/listing/delete/${listingId}`, {
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
         method: 'DELETE',
       });
       const data = await res.json();
@@ -165,105 +165,90 @@ export default function Profile() {
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        <input
-          onChange={(e) => setFile(e.target.files[0])}
-          type='file'
-          ref={fileRef}
-          hidden
-          accept='image/*'
-        />
-        <img
-          onClick={() => fileRef.current.click()}
-          src={formData.avatar || currentUser.avatar}
-          alt='profile'
-          className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'
-        />
-        <p className='text-sm self-center'>
-          {fileUploadError ? (
-            <span className='text-red-700'>
-              Error Image upload (image must be less than 2 mb)
-            </span>
-          ) : filePerc > 0 && filePerc < 100 ? (
-            <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
-          ) : filePerc === 100 ? (
-            <span className='text-green-700'>Image successfully uploaded!</span>
-          ) : (
-            ''
-          )}
-        </p>
-        <input
-          type='text'
-          placeholder='username'
-          defaultValue={currentUser.username}
-          id='username'
-          className='border p-3 rounded-lg'
-          onChange={handleChange}
-        />
-        <input
-          type='email'
-          placeholder='email'
-          id='email'
-          defaultValue={currentUser.email}
-          className='border p-3 rounded-lg'
-          onChange={handleChange}
-        />
-        <input
-          type='password'
-          placeholder='password'
-          onChange={handleChange}
-          id='password'
-          className='border p-3 rounded-lg'
-        />
-        <Button>
-          <button
-            disabled={loading}
-            className='text-white uppercase disabled:opacity-80'
-          >
-            {loading ? 'Loading...' : 'Update'}
-          </button></Button>
+      <form onSubmit={handleSubmit} className='flex flex-col items-center gap-4 p-6 rounded-lg bg-gray-100 shadow-md'>
+  <label htmlFor="avatar" className="flex flex-col items-center gap-2 cursor-pointer">
+    <div className="rounded-full h-24 w-24 overflow-hidden border border-gray-300">
+      <img 
+        src={formData.avatar || currentUser.avatar} 
+        alt="profile" 
+        className="h-full w-full object-cover"
+      />
+    </div>
+    <span className="text-blue-500 font-medium underline">Change Profile Picture</span>
+    <input type="file" id="avatar" ref={fileRef} hidden accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
+  </label>
 
-        {/* <Link
-          className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95'
-          to={'/create-listing'}
-        >
-          Create Listing
-        </Link> */}
+  {/* Upload Feedback */}
+  <p className="text-sm text-center">
+    {fileUploadError ? (
+      <span className="text-red-700">Error: Image must be less than 2mb</span>
+    ) : filePerc > 0 && filePerc < 100 ? (
+      <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
+    ) : filePerc === 100 ? (
+      <span className="text-green-700">Image successfully uploaded!</span>
+    ) : (
+      ''
+    )}
+  </p>
 
+  {/* Form Fields */}
+  <div className="w-full">
+    <input 
+      type="text" 
+      placeholder="Username" 
+      defaultValue={currentUser.username} 
+      id="username" 
+      className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+      onChange={handleChange} 
+    />
+  </div>
+  <div className="w-full mt-2">
+    <input 
+      type="email" 
+      placeholder="Email" 
+      id="email" 
+      defaultValue={currentUser.email} 
+      className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+      onChange={handleChange} 
+    />
+  </div>
+  <div className="w-full mt-2">
+    <input 
+      type="password" 
+      placeholder="Password" 
+      id="password" 
+      className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+      onChange={handleChange} 
+    />
+  </div>
 
-        {/* to add property or listing */}
-        <Button className='' onClick={() => handleOpen("xxl")} >
-          Add Property
-        </Button>
-        <Dialog
-          open={size === "xxl"}
-          size={size || "md"}
-          handler={handleOpen}
-        >
-          <div className="flex justify-end mr-10">
-            <Button
-              variant="text"
-              color="red"
-              onClick={() => handleOpen(null)}
-              className="mt-1"
-            >
-              <svg className="w-9" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path opacity="0.5" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22Z" fill="#1C274C"></path>
-                  <path d="M8.96967 8.96967C9.26256 8.67678 9.73744 8.67678 10.0303 8.96967L12 10.9394L13.9697 8.96969C14.2626 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0303L13.0607 12L15.0303 13.9697C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0304 15.0303C9.73746 15.3232 9.26258 15.3232 8.96969 15.0303C8.6768 14.7374 8.6768 14.2626 8.96969 13.9697L10.9394 12L8.96967 10.0303C8.67678 9.73744 8.67678 9.26256 8.96967 8.96967Z" fill="#1C274C"></path>
-                </g>
-              </svg>
-            </Button>
-          </div>
-          <PopUp />
-        </Dialog>
-        {/* ------- */}
+  {/* Buttons */}
+  <button 
+    type="submit"
+    disabled={loading} 
+    className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg disabled:opacity-80"
+  >
+    {loading ? (
+      <div className="items-center flex justify-center">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 animate-spin">
+          <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="4"></circle>
+        </svg>
+      </div> 
+    ) : 'Update'}
+  </button>
+
+  <button 
+    type="button"
+    onClick={() => handleOpen("xxl")} 
+    className="w-full mt-2 bg-green-500 hover:bg-green-600 text-white font-medium py-3 rounded-lg"
+  >
+    Add Property
+  </button>
+
+  {/* ... Your Dialog Component Here ... */} 
+</form>
 
 
-
-      </form>
       <div className='flex justify-between mt-5'>
         <span
           onClick={handleDeleteUser}
@@ -271,7 +256,7 @@ export default function Profile() {
         >
           Delete account
         </span>
-        
+
       </div>
 
       <p className='text-red-700 mt-5'>{error ? error : ''}</p>

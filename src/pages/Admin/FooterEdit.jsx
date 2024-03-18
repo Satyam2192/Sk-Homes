@@ -25,7 +25,7 @@ export default function EditFooter() {
     });
 
     useEffect(() => {
-        fetch('https://sk-home-backend.onrender.com/api/footer/get')
+        fetch('/api/footer/get')
             .then((response) => response.json())
             .then((data) => setFooterData(data[0]))
             .catch((error) => console.error('Error fetching data:', error));
@@ -41,7 +41,7 @@ export default function EditFooter() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('https://sk-home-backend.onrender.com/api/footer/update/65c3836265548e91da9696d1', {
+        fetch('/api/footer/update/65c3836265548e91da9696d1', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -263,7 +263,7 @@ export default function EditFooter() {
                         />
                     </div>
 
-                    <button type="submit" className="mt-10 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                    <button type="submit" className="mt-10 bg-[#059669] text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
                         Save Changes
                     </button>
                 </form>

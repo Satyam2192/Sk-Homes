@@ -4,7 +4,7 @@ import { signOutUserStart, deleteUserSuccess, deleteUserFailure } from 'your-red
 export const handleSignOut = async (dispatch) => {
     try {
         dispatch(signOutUserStart());
-        const res = await fetch(`https://sk-home-backend.onrender.com/api/auth/signout`);
+        const res = await fetch(`/api/auth/signout`);
         const data = await res.json();
 
         if (data.success === false) {
@@ -21,7 +21,7 @@ export const handleSubmit = async (e) => {
     e.preventDefault();
     try {
         dispatch(updateUserStart());
-        const res = await fetch(`https://sk-home-backend.onrender.com/api/user/update/${currentUser._id}`, {
+        const res = await fetch(`/api/user/update/${currentUser._id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export const handleSubmit = async (e) => {
 export const handleDeleteUser = async () => {
     try {
         dispatch(deleteUserStart());
-        const res = await fetch(`https://sk-home-backend.onrender.com/api/user/delete/${currentUser._id}`, {
+        const res = await fetch(`/api/user/delete/${currentUser._id}`, {
             method: 'DELETE',
         });
         const data = await res.json();
@@ -61,7 +61,7 @@ export const handleDeleteUser = async () => {
 export const handleShowListings = async () => {
     try {
         setShowListingsError(false);
-        const res = await fetch(`https://sk-home-backend.onrender.com/api/user/listings/${currentUser._id}`);
+        const res = await fetch(`/api/user/listings/${currentUser._id}`);
         const data = await res.json();
         if (data.success === false) {
             setShowListingsError(true);
@@ -76,7 +76,7 @@ export const handleShowListings = async () => {
 
 export const handleListingDelete = async (listingId) => {
     try {
-        const res = await fetch(`https://sk-home-backend.onrender.com/api/listing/delete/${listingId}`, {
+        const res = await fetch(`/api/listing/delete/${listingId}`, {
             method: 'DELETE',
         });
         const data = await res.json();
