@@ -11,8 +11,7 @@ import {
   Button, Dialog,
 } from "@material-tailwind/react";
 import { PopUp } from '../pages/PopUp';
-
-
+import Loader2 from "../components/Loader2"
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -166,87 +165,103 @@ export default function Profile() {
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
       <form onSubmit={handleSubmit} className='flex flex-col items-center gap-4 p-6 rounded-lg bg-gray-100 shadow-md'>
-  <label htmlFor="avatar" className="flex flex-col items-center gap-2 cursor-pointer">
-    <div className="rounded-full h-24 w-24 overflow-hidden border border-gray-300">
-      <img 
-        src={formData.avatar || currentUser.avatar} 
-        alt="profile" 
-        className="h-full w-full object-cover"
-      />
-    </div>
-    <span className="text-blue-500 font-medium underline">Change Profile Picture</span>
-    <input type="file" id="avatar" ref={fileRef} hidden accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
-  </label>
+        <label htmlFor="avatar" className="flex flex-col items-center gap-2 cursor-pointer">
+          <div className="rounded-full h-24 w-24 overflow-hidden border border-gray-300">
+            <img
+              src={formData.avatar || currentUser.avatar}
+              alt="profile"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <span className="text-blue-500 font-medium underline">Change Profile Picture</span>
+          <input type="file" id="avatar" ref={fileRef} hidden accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
+        </label>
 
-  {/* Upload Feedback */}
-  <p className="text-sm text-center">
-    {fileUploadError ? (
-      <span className="text-red-700">Error: Image must be less than 2mb</span>
-    ) : filePerc > 0 && filePerc < 100 ? (
-      <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
-    ) : filePerc === 100 ? (
-      <span className="text-green-700">Image successfully uploaded!</span>
-    ) : (
-      ''
-    )}
-  </p>
+        {/* Upload Feedback */}
+        <p className="text-sm text-center">
+          {fileUploadError ? (
+            <span className="text-red-700">Error: Image must be less than 2mb</span>
+          ) : filePerc > 0 && filePerc < 100 ? (
+            <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
+          ) : filePerc === 100 ? (
+            <span className="text-green-700">Image successfully uploaded!</span>
+          ) : (
+            ''
+          )}
+        </p>
 
-  {/* Form Fields */}
-  <div className="w-full">
-    <input 
-      type="text" 
-      placeholder="Username" 
-      defaultValue={currentUser.username} 
-      id="username" 
-      className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-      onChange={handleChange} 
-    />
-  </div>
-  <div className="w-full mt-2">
-    <input 
-      type="email" 
-      placeholder="Email" 
-      id="email" 
-      defaultValue={currentUser.email} 
-      className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-      onChange={handleChange} 
-    />
-  </div>
-  <div className="w-full mt-2">
-    <input 
-      type="password" 
-      placeholder="Password" 
-      id="password" 
-      className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-      onChange={handleChange} 
-    />
-  </div>
+        {/* Form Fields */}
+        <div className="w-full">
+          <input
+            type="text"
+            placeholder="Username"
+            defaultValue={currentUser.username}
+            id="username"
+            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="w-full mt-2">
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            defaultValue={currentUser.email}
+            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="w-full mt-2">
+          <input
+            type="password"
+            placeholder="Password"
+            id="password"
+            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={handleChange}
+          />
+        </div>
 
-  {/* Buttons */}
-  <button 
-    type="submit"
-    disabled={loading} 
-    className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg disabled:opacity-80"
-  >
-    {loading ? (
-      <div className="items-center flex justify-center">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 animate-spin">
-          <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="4"></circle>
-        </svg>
-      </div> 
-    ) : 'Update'}
-  </button>
+        {/* Buttons */}
+        <Button className='w-full h-12'>
+          <button
+            disabled={loading}
+            className='text-white uppercase disabled:opacity-80'
+          >
+            {loading ? <div className=''><Loader2/></div> : 'Update'}
+          </button></Button>
 
-  <button 
-    type="button"
-    onClick={() => handleOpen("xxl")} 
-    className="w-full mt-2 bg-green-500 hover:bg-green-600 text-white font-medium py-3 rounded-lg"
-  >
-    Add Property
-  </button>
 
-  {/* ... Your Dialog Component Here ... */} 
-</form>
+        {/* to add property or listing */}
+        <Button className='w-full p-4' onClick={() => handleOpen("xxl")} >
+          Add Property
+        </Button>
+        <Dialog
+          open={size === "xxl"}
+          size={size || "md"}
+          handler={handleOpen}
+        >
+          <div className="flex justify-end mr-10">
+            <Button
+              variant="text"
+              color="red"
+              onClick={() => handleOpen(null)}
+              className="mt-1"
+            >
+              <svg className="w-9" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path opacity="0.5" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22Z" fill="#1C274C"></path>
+                  <path d="M8.96967 8.96967C9.26256 8.67678 9.73744 8.67678 10.0303 8.96967L12 10.9394L13.9697 8.96969C14.2626 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0303L13.0607 12L15.0303 13.9697C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0304 15.0303C9.73746 15.3232 9.26258 15.3232 8.96969 15.0303C8.6768 14.7374 8.6768 14.2626 8.96969 13.9697L10.9394 12L8.96967 10.0303C8.67678 9.73744 8.67678 9.26256 8.96967 8.96967Z" fill="#1C274C"></path>
+                </g>
+              </svg>
+            </Button>
+          </div>
+          <PopUp />
+        </Dialog>
+        {/* ------- */}
+
+      </form>
 
 
       <div className='flex justify-between mt-5'>
