@@ -21,6 +21,7 @@ import {
 import {
     Bars4Icon,
     GlobeAmericasIcon,
+    HomeIcon,
     NewspaperIcon,
     PhoneIcon,
     RectangleGroupIcon,
@@ -242,31 +243,27 @@ import {
     InboxArrowDownIcon,
     LifebuoyIcon,
 } from "@heroicons/react/24/solid";
+import { MdDeleteOutline, MdOutlineDelete } from "react-icons/md";
 // profile menu component
 const profileMenuItems = [
     {
         label: "My Profile",
         icon: UserCircleIcon,
-        link: "/profile"
+        link: "/dashboard/profile"
     },
     {
-        label: "Edit Profile",
-        icon: Cog6ToothIcon,
-        link: "/profile"
+        label: "Properties",
+        icon: HomeIcon,
+        link: "dashboard/home"
 
     },
     {
-        label: "Inbox",
-        icon: InboxArrowDownIcon,
-        link: "/profile"
+        label: "Delete Account",
+        icon:  MdOutlineDelete,
+        link: "/dashboard/delete"
 
     },
-    {
-        label: "Help",
-        icon: LifebuoyIcon,
-        link: "/profile"
 
-    },
 
 ];
 

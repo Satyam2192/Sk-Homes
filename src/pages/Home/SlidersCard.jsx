@@ -36,10 +36,10 @@ export default function SliderCard({ images }) {
           <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
             {images &&
               images.map((image, index) => (
-                <li key={index}>
+                <li key={index} className='mx-0 mt-0 h-full xl:h-full'>
                   <img
                     src={image}
-                    className="w-full max-w-full max-h-full m-auto bg-no-repeat bg-center object-cover" // Added object-cover
+                    className="relative h-full w-full object-cover" 
                   />
                 </li>
               ))}

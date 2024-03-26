@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://sk-home-backend.onrender.com",
+        target: "http://13.49.67.115",
         changeOrigin: true,
         secure: false,
       },
