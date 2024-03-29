@@ -333,9 +333,9 @@ export default function CreateListing() {
               className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
             >
               {uploading ? <div className=' items-center flex justify-center'>< svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-live="polite" aria-busy="true" aria-labelledby="title-08a desc-08a" className="w-6 h-6">
-                  <path d="M7 8H3V16H7V8Z" className="fill-[#10b981] animate animate-bounce " />
-                  <path d="M14 8H10V16H14V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.2s]" />
-                  <path d="M21 8H17V16H21V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.4s]" />
+                  <path d="M7 8H3V16H7V8Z" className="fill-emerald animate animate-bounce " />
+                  <path d="M14 8H10V16H14V8Z" className="fill-emerald animate animate-bounce  [animation-delay:.2s]" />
+                  <path d="M21 8H17V16H21V8Z" className="fill-emerald animate animate-bounce  [animation-delay:.4s]" />
                 </svg></div> : 'Upload'}
             </button>
           </div>
@@ -367,9 +367,9 @@ export default function CreateListing() {
             className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
           >
             {loading ? <div className=' items-center flex justify-center'>< svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-live="polite" aria-busy="true" aria-labelledby="title-08a desc-08a" className="w-6 h-6">
-                  <path d="M7 8H3V16H7V8Z" className="fill-[#10b981] animate animate-bounce " />
-                  <path d="M14 8H10V16H14V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.2s]" />
-                  <path d="M21 8H17V16H21V8Z" className="fill-[#10b981] animate animate-bounce  [animation-delay:.4s]" />
+                  <path d="M7 8H3V16H7V8Z" className="fill-emerald animate animate-bounce " />
+                  <path d="M14 8H10V16H14V8Z" className="fill-emerald animate animate-bounce  [animation-delay:.2s]" />
+                  <path d="M21 8H17V16H21V8Z" className="fill-emerald animate animate-bounce  [animation-delay:.4s]" />
                 </svg></div> : 'Create listing'}
           </button>
           {error && <p className='text-red-700 text-sm'>{error}</p>}

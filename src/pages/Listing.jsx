@@ -6,13 +6,8 @@ import { useSelector } from 'react-redux';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
 import {
-  FaBath,
-  FaBed,
   FaChair,
-  FaMapMarkedAlt,
   FaMapMarkerAlt,
-  FaParking,
-  FaShare,
 } from 'react-icons/fa';
 import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
 
@@ -24,6 +19,7 @@ import BedIcon from '@mui/icons-material/Bed';
 import BathtubIcon from '@mui/icons-material/Bathtub';
 import LocalParkingIcon from '@mui/icons-material/LocalParking';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import SliderCard from './Home/SlidersCard';
 
 export default function Listing() {
   SwiperCore.use([Navigation]);
@@ -73,19 +69,8 @@ export default function Listing() {
       )}
       {listing && !loading && !error && (
         <div className='mt-2'>
-          <Swiper navigation>
-            {listing.imageUrls.map((url) => (
-              <SwiperSlide key={url}>
-                <div
-                  className='h-[550px]'
-                  style={{
-                    background: `url(${url}) center no-repeat`,
-                    backgroundSize: 'cover',
-                  }}
-                ></div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <SliderCard images={listing.imageUrls} />
+
           <div className='fixed top-[13%] right-[3%] z-10 border-[#039667] rounded-full w-12 h-12 flex justify-center items-center bg-[#87f8d4] cursor-pointer'>
           <ShareOutlinedIcon className='border-[#039667] text-[#059669]' onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
@@ -117,11 +102,11 @@ export default function Listing() {
               {listing.address}
             </p>
             <div className='flex gap-4'>
-              <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-[#10b981] bg-[#10b981] hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
+              <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-emerald bg-emerald hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
               </p>
               {listing.offer && (
-                <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-[#10b981] bg-[#10b981] hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
+                <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-emerald bg-emerald hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
                   Rs. {+listing.regularPrice - +listing.discountPrice} OFF
                 </p>
               )}

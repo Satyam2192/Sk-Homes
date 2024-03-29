@@ -32,14 +32,14 @@ export default function SliderCard({ images }) {
       {/* Component: Card Slider */}
       <div className="shadow-xl glide-06 shadow-slate-200">
         {/* Slides */}
-        <div className=" h-[650px] overflow-hidden" data-glide-el="track">
+        <div className="h-[35vh] md:h-[95vh] overflow-hidden" data-glide-el="track">
           <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
             {images &&
               images.map((image, index) => (
                 <li key={index} className='mx-0 mt-0 h-full xl:h-full'>
                   <img
                     src={image}
-                    className="relative h-full w-full object-cover" 
+                    className="relative bg-cover md:h-[700px] w-full object-cover overflow-hidden" 
                   />
                 </li>
               ))}
@@ -48,7 +48,7 @@ export default function SliderCard({ images }) {
 
         {/* Controls */}
         <div
-          className="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/2 "
+          className="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/4 md:top-1/2 "
           data-glide-el="controls"
         >
           <button
@@ -96,7 +96,7 @@ export default function SliderCard({ images }) {
         </div>
         {/*   Indicators */}
         <div
-          className="absolute bottom-0 flex items-center justify-center w-full gap-2"
+          className="absolute md:bottom-0 flex items-center justify-center w-full gap-2"
           data-glide-el="controls[nav]"
         >
           <button
