@@ -52,7 +52,7 @@
     "react-select-country-list": "^2.2.3",
     "reactjs-popup": "^2.0.6",
     "redux-persist": "^6.0.0",
-    "sort-by": "^1.2.0",
+    "sort-by": "^0.0.2",
     "swiper": "^10.2.0",
     "webpack": "^5.91.0",
     "world-countries": "^5.0.0"
