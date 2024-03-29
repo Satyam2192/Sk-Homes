@@ -102,11 +102,11 @@ export default function Listing() {
               {listing.address}
             </p>
             <div className='flex gap-4'>
-              <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-emerald bg-emerald hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
+              <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-sky bg-sky hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
               </p>
               {listing.offer && (
-                <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-emerald bg-emerald hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
+                <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-sky bg-sky hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
                   Rs. {+listing.regularPrice - +listing.discountPrice} OFF
                 </p>
               )}

@@ -3,7 +3,7 @@ export default function successAleart({message}) {
     return (
         <>
             <div
-                className="flex w-full items-start gap-4 rounded border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-500"
+                className="flex w-full items-start gap-4 rounded border border-sky-100 bg-sky-50 px-4 py-3 text-sm text-sky-500"
                 role="alert"
             >
                 <svg

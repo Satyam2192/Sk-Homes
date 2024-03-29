@@ -22,6 +22,8 @@ import {
 import { app } from '../../firebase';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Loader from "../Loader2";
+import { MdDeleteForever } from "react-icons/md";
 
 
 export function Steps() {
@@ -69,11 +71,11 @@ export function Steps() {
         setMapKey((prevKey) => prevKey + 1);
 
         if (formData.address) {
-          setZoomLevel(15); // for specific addresses
+          setZoomLevel(15);
         } else if (formData.city) {
-          setZoomLevel(10); // for citys
+          setZoomLevel(10);
         } else if (formData.country) {
-          setZoomLevel(5); // for countries
+          setZoomLevel(5);
         }
       } catch (error) {
         console.error('Error fetching coordinates:', error);
@@ -218,15 +220,16 @@ export function Steps() {
 
 
   return (
-    <div className="w-full px-24">
+    <div className=" h-[100vh] px-3 md:px-24 overflow-hidden">
       <Stepper
+        className="mt-11   md:flex "
         activeStep={activeStep}
         isLastStep={(value) => setIsLastStep(value)}
         isFirstStep={(value) => setIsFirstStep(value)}
       >
-        <Step onClick={() => setActiveStep(0)}>
+        <Step className="" onClick={() => setActiveStep(0)}>
           <UserIcon className="h-5 w-5" />
-          <div className="absolute -bottom-[4.5rem] w-max text-center">
+          <div className="hidden md:block md:absolute md:-bottom-[4.5rem] md:w-max md:text-center">
             <Typography
               variant="h6"
               color={activeStep === 0 ? "blue-gray" : "gray"}
@@ -243,7 +246,7 @@ export function Steps() {
         </Step>
         <Step onClick={() => setActiveStep(1)}>
           <CogIcon className="h-5 w-5" />
-          <div className="absolute -bottom-[4.5rem] w-max text-center">
+          <div className="hidden md:block absolute -bottom-[4.5rem] w-max text-center">
             <Typography
               variant="h6"
               color={activeStep === 1 ? "blue-gray" : "gray"}
@@ -260,7 +263,7 @@ export function Steps() {
         </Step>
         <Step onClick={() => setActiveStep(2)}>
           <BuildingLibraryIcon className="h-5 w-5" />
-          <div className="absolute -bottom-[4.5rem] w-max text-center">
+          <div className="hidden md:block absolute -bottom-[4.5rem] w-max text-center">
             <Typography
               variant="h6"
               color={activeStep === 2 ? "blue-gray" : "gray"}
@@ -279,10 +282,10 @@ export function Steps() {
 
       {/*step 1 Adress*/}
       {activeStep === 0 &&
-        <div className="container mx-auto mt-[60px] p-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div className="container md:mx-auto  md:mt-[60px] md:p-4 h-[536px] md:h-[565px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2">
             <div>
-              <label htmlFor="country" className="text-md font-medium">
+              <label htmlFor="country" className="text-md font-medium ">
                 Country
               </label>
               <input
@@ -340,7 +343,7 @@ export function Steps() {
 
       {/*Step 2 Property details*/}
       {activeStep === 1 &&
-        <main className='p-3 mt-24 max-w-4xl mx-auto'>
+        <main className='p-3 mt-24 max-w-4xl mx-auto h-[66vh] md:h-[70vh]'>
           <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
             <div className='flex flex-col gap-4 flex-1'>
               <input
@@ -490,11 +493,11 @@ export function Steps() {
         </main>
       }
 
-      {/* step  3 Upload images*/}
+      {/* step 3 Upload images*/}
       {activeStep === 2 &&
-        <main className='mt-24 p-3 max-w-4xl mx-auto'>
+        <main className='mt-24 p-3 max-w-4xl mx-auto h-[66vh]  md:h-[70vh]'>
 
-          <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
+          <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
 
             <div className='flex flex-col flex-1 gap-4'>
               <p className='font-semibold'>
@@ -503,6 +506,7 @@ export function Steps() {
                   The first image will be the cover (max 6)
                 </span>
               </p>
+
               <div className='flex gap-4'>
                 <input
                   onChange={(e) => setFiles(e.target.files)}
@@ -512,66 +516,72 @@ export function Steps() {
                   accept='image/*'
                   multiple
                 />
-                <button
+
+                <Button
                   type='button'
                   disabled={uploading}
                   onClick={handleImageSubmit}
-                  className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
+                  className="w-32 mx-auto"
                 >
-                  {uploading ? <div className=' items-center flex justify-center'>< svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-live="polite" aria-busy="true" aria-labelledby="title-08a desc-08a" className="w-6 h-6">
-                  <path d="M7 8H3V16H7V8Z" className="fill-emerald animate animate-bounce " />
-                  <path d="M14 8H10V16H14V8Z" className="fill-emerald animate animate-bounce  [animation-delay:.2s]" />
-                  <path d="M21 8H17V16H21V8Z" className="fill-emerald animate animate-bounce  [animation-delay:.4s]" />
-                </svg></div> : 'Upload'}
-              </button>
+                  {uploading ? <Loader /> : 'Upload'}
+                </Button>
 
+              </div>
+              <p className='text-red-700 text-sm'>
+                {imageUploadError && imageUploadError}
+              </p>
             </div>
-            <p className='text-red-700 text-sm'>
-              {imageUploadError && imageUploadError}
-            </p>
-            {formData.imageUrls.length > 0 &&
-              formData.imageUrls.map((url, index) => (
-                <div
-                  key={url}
-                  className='flex justify-between p-3 border items-center'
-                >
-                  <img
-                    src={url}
-                    alt='listing image'
-                    className='w-20 h-20 object-contain rounded-lg'
-                  />
-                  <button
-                    type='button'
-                    onClick={() => handleRemoveImage(index)}
-                    className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
+
+
+            <div className="grid grid-cols-3 ">
+              {formData.imageUrls.length > 0 &&
+                formData.imageUrls.map((url, index) => (
+                  <div
+                    key={url}
+                    className="flex flex-row gap-3 p-3"
                   >
-                    Delete
-                  </button>
-                </div>
-              ))}
+                    <img
+                      src={url}
+                      alt="listing image"
+                      className="h-16 md:h-28 md:w-28 object-cover border shadow-md"
+                    />
+                    {/* delete */}
+                    <span className="absolute ml-5">
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveImage(index)}
+                        className="p-3 text-red-700 rounded-lg uppercase hover:opacity-75"
+                      >
+                        <MdDeleteForever className="w-9 h-9" />
+                      </button>
+                    </span>
+                  </div>
+
+                ))}
+            </div>
             <button
               disabled={loading || uploading}
               className='p-3 bg-black text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
             >
               {loading ? <div className=' items-center flex justify-center'>< svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-live="polite" aria-busy="true" aria-labelledby="title-08a desc-08a" className="w-6 h-6">
-                  <path d="M7 8H3V16H7V8Z" className="fill-emerald animate animate-bounce " />
-                  <path d="M14 8H10V16H14V8Z" className="fill-emerald animate animate-bounce  [animation-delay:.2s]" />
-                  <path d="M21 8H17V16H21V8Z" className="fill-emerald animate animate-bounce  [animation-delay:.4s]" />
-                </svg></div> : 'Create listing'}
+                <path d="M7 8H3V16H7V8Z" className="fill-sky animate animate-bounce " />
+                <path d="M14 8H10V16H14V8Z" className="fill-sky animate animate-bounce  [animation-delay:.2s]" />
+                <path d="M21 8H17V16H21V8Z" className="fill-sky animate animate-bounce  [animation-delay:.4s]" />
+              </svg></div> : 'Create listing'}
             </button>
             {error && <p className='text-red-700 text-sm'>{error}</p>}
-          </div>
-        </form>
+
+          </form>
         </main>
       }
-<div className="mt-2 flex justify-between">
-  <Button onClick={handlePrev} disabled={isFirstStep}>
-    Prev
-  </Button>
-  <Button onClick={handleNext} disabled={isLastStep}>
-    Next
-  </Button>
-</div>
+      <div className="flex justify-between">
+        <Button onClick={handlePrev} disabled={isFirstStep}>
+          Prev
+        </Button>
+        <Button onClick={handleNext} disabled={isLastStep}>
+          Next
+        </Button>
+      </div>
     </div >
   );
 }

@@ -79,7 +79,7 @@ import React, { useState, useEffect, useRef } from "react"
 //     <>
 //       <div className="relative inline-flex " id="dropdown">
 //         <button
-//           className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+//           className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-sky px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-sky-600 focus:bg-sky-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-sky-300 disabled:bg-sky-300 disabled:shadow-none"
 //           onClick={() => setIsOpen(!isOpen)}
 //           aria-expanded={isOpen ? " true" : "false"}
 //           ref={wrapperRef}
@@ -117,9 +117,9 @@ import React, { useState, useEffect, useRef } from "react"
 //                 <a
 //                   className={` ${
 //                     index === currentItem
-//                       ? "bg-emerald-50 text-emerald"
+//                       ? "bg-sky-50 text-sky"
 //                       : "bg-none text-slate-500"
-//                   } flex items-start justify-start gap-2 p-2 px-5 transition-colors duration-300 hover:bg-emerald-50 hover:text-emerald focus:bg-emerald-50 focus:text-emerald-600 focus:outline-none focus-visible:outline-none`}
+//                   } flex items-start justify-start gap-2 p-2 px-5 transition-colors duration-300 hover:bg-sky-50 hover:text-sky focus:bg-sky-50 focus:text-sky-600 focus:outline-none focus-visible:outline-none`}
 //                   href="#"
 //                   aria-current={index + 1 === currentItem ? "page" : "false"}
 //                 >
@@ -280,41 +280,41 @@ export default function Search() {
               <input
                 type='checkbox'
                 id='all'
-                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-emerald checked:bg-emerald checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
+                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-sky checked:bg-sky checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
                 onChange={handleChange}
                 checked={sidebardata.type === 'all'}
               />
-              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-emerald hover:bg-[#059669]'>Rent & Sale</span>
+              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-sky hover:bg-[#059669]'>Rent & Sale</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
                 id='rent'
-                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-emerald checked:bg-emerald checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
+                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-sky checked:bg-sky checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
                 onChange={handleChange}
                 checked={sidebardata.type === 'rent'}
               />
-              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-emerald hover:bg-[#059669]'>Rent</span>
+              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-sky hover:bg-[#059669]'>Rent</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
                 id='sale'
-                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-emerald checked:bg-emerald checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
+                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-sky checked:bg-sky checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
                 onChange={handleChange}
                 checked={sidebardata.type === 'sale'}
               />
-              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-emerald hover:bg-[#059669]'>Sale</span>
+              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-sky hover:bg-[#059669]'>Sale</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
                 id='offer'
-                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-emerald checked:bg-emerald checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
+                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-sky checked:bg-sky checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
                 onChange={handleChange}
                 checked={sidebardata.offer}
               />
-              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-emerald hover:bg-[#059669]'>Offer</span>
+              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-sky hover:bg-[#059669]'>Offer</span>
             </div>
           </div>
           <div className='flex flex-col gap-2 flex-wrap'>
@@ -323,21 +323,21 @@ export default function Search() {
               <input
                 type='checkbox'
                 id='parking'
-                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-emerald checked:bg-emerald checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
+                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-sky checked:bg-sky checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
                 onChange={handleChange}
                 checked={sidebardata.parking}
               />
-              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-emerald hover:bg-[#059669]'>Parking</span>
+              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-sky hover:bg-[#059669]'>Parking</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
                 id='furnished'
-                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-emerald checked:bg-emerald checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
+                className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b] bg-white transition-colors checked:border-sky checked:bg-sky checked:hover:border-[#059669] checked:hover:bg-[#059669] focus:outline-none checked:focus:border-[#047857] checked:focus:bg-[#047857] focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50'
                 onChange={handleChange}
                 checked={sidebardata.furnished}
               />
-              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-emerald hover:bg-[#059669]'>Furnished</span>
+              <span className='inline-flex items-center justify-center h-8 gap-2 px-4 text-xs font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-sky hover:bg-[#059669]'>Furnished</span>
             </div>
           </div>
           <div className='flex items-center gap-2'>
@@ -357,7 +357,7 @@ export default function Search() {
               cursor-pointer
               focus:outline-none
               focus:ring-2
-              focus:ring-inset focus:ring-emerald text-[#334155]'
+              focus:ring-inset focus:ring-sky text-[#334155]'
             >
               <option value='regularPrice_asc' >Price: low to high</option>
               <option value='regularPrice_desc' >Price: high to low</option>
@@ -365,7 +365,7 @@ export default function Search() {
               <option value='createdAt_asc' >Oldest</option>
             </select>
           </div>
-          <button className='bg-emerald hover:bg-[#059669] text-white p-3 rounded-lg uppercase hover:opacity-95'>
+          <button className='bg-sky hover:bg-[#059669] text-white p-3 rounded-lg uppercase hover:opacity-95'>
             Search
           </button>
         </form>
@@ -418,7 +418,7 @@ export default function Search() {
           {showMore && (
             <button
               onClick={onShowMoreClick}
-              className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b]  transition-colors bg-emerald '
+              className='inline-flex items-center justify-center w-5 cursor-pointer rounded border-2 border-[#64748b]  transition-colors bg-sky '
             >
               Show more
             </button>
