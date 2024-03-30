@@ -7,7 +7,7 @@ export default function CheackBoxElement() {
     <>
       <div className="relative flex flex-wrap items-center">
         <input
-          className="peer h-4 w-4 cursor-pointer appearance-none rounded border-2 border-slate-500 bg-white transition-colors checked:border-sky checked:bg-sky checked:hover:border-sky-600 checked:hover:bg-sky-600 focus:outline-none checked:focus:border-sky-700 checked:focus:bg-sky-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+          className="peer h-4 w-4 cursor-pointer appearance-none rounded border-2 border-slate-500 bg-white transition-colors checked:border-sky checked:bg-[#059669] checked:hover:border-sky-600 checked:hover:bg-[#059669]-600 focus:outline-none checked:focus:border-sky-700 checked:focus:bg-[#059669]-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
           type="checkbox"
           checked={checked}
           onChange={() => setChecked(!checked)}

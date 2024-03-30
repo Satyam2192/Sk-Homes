@@ -24,12 +24,15 @@ export default function Contact({ listing }) {
     <>
       {landlord && (
         <div className='flex flex-col gap-2'>
-          <p>
-            Contact <span className='font-semibold'>{landlord.username}</span>{' '}
-            for{' '}
-            <span className='font-semibold'>{listing.name.toLowerCase()}</span>
-          </p>
-          
+          <p className="text-lg font-medium text-gray-900">
+  Contact {" "}
+  <span className="font-bold text-[#059669]">{landlord.username}</span> 
+  {" "} for {" "}
+  <span className="font-bold text-[#059669]">{listing.name.toLowerCase()}</span>
+</p>
+
+
+
 
           <div className="relative mb-6 mt-3">
             <textarea
@@ -48,7 +51,7 @@ export default function Contact({ listing }) {
             >
               Write your message
             </label>
-            
+
           </div>
 
           <Link

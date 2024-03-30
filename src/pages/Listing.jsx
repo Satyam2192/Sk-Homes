@@ -82,7 +82,7 @@ export default function Listing() {
           </div>
           {copied && (
             
-            <div className="w-[99%] mx-2 fixed bottom-[1%]  z-10 flex items-center gap-4 px-4 py-3 text-lg border rounded border-[#039667] bg-[#87f8d4] text-[#059669]" role="alert">
+            <div className="w-[99%] mx-2 bottom-[1%]  z-10 flex items-center gap-4 px-4 py-3 text-lg border rounded border-[#039667] bg-[#87f8d4] text-[#059669]" role="alert">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" role="graphics-symbol" aria-labelledby="title-01 desc-01">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -91,7 +91,7 @@ export default function Listing() {
           )}
           <div className='flex flex-col max-w-4xl mx-auto p-3 mt-7 gap-4'>
             <p className='text-2xl font-semibold'>
-              {listing.name} - ${' '}
+              {listing.name} - ₹{' '}
               {listing.offer
                 ? listing.discountPrice.toLocaleString('en-US')
                 : listing.regularPrice.toLocaleString('en-US')}
@@ -102,11 +102,11 @@ export default function Listing() {
               {listing.address}
             </p>
             <div className='flex gap-4'>
-              <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-sky bg-sky hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
+              <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-sky bg-[#059669] hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
               </p>
               {listing.offer && (
-                <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-sky bg-sky hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
+                <p className=' w-full max-w-[200px] text-white text-lg font-semibold p-1 inline-flex items-center justify-center  cursor-pointer rounded border-2  transition-colors border-sky bg-[#059669] hover:border-[#059669] hover:bg-[#059669] focus:outline-none focus:border-[#047857] focus:bg-[#047857]'>
                   Rs. {+listing.regularPrice - +listing.discountPrice} OFF
                 </p>
               )}

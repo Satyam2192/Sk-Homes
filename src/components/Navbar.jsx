@@ -382,7 +382,7 @@ export function NavbarWithMegaMenu() {
     }, []);
 
     return (
-        <Navbar className="fixed top-0 z-10 mx-auto max-w-full px-5 py-2 ">
+        <Navbar className="fixed top-0 z-10 mx-auto max-w-full px-5 py-2 rounded-none ">
             <div className="flex items-center justify-between text-blue-gray-900">
                 <Link to="/">
                     <Typography

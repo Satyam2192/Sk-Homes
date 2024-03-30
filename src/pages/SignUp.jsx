@@ -98,7 +98,7 @@ export default function SignUp() {
             <button
               disabled={loading}
               onClick={handleSubmit}
-              className='w-full block bg-sky hover:bg-[#059669] focus:bg-[#059669] text-white font-semibold rounded-lg px-4 py-3 mt-6'
+              className='w-full block bg-[#059669] hover:bg-[#059669] focus:bg-[#059669] text-white font-semibold rounded-lg px-4 py-3 mt-6'
             >
               {loading ? <div className=' items-center flex justify-center'>< svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-live="polite" aria-busy="true" aria-labelledby="title-08a desc-08a" className="w-6 h-6">
                   <path d="M7 8H3V16H7V8Z" className="fill-sky animate animate-bounce " />
